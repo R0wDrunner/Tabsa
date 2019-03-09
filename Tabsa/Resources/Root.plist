@@ -1,0 +1,68 @@
+{
+	title =  "Tabsa";
+	entry = {
+		cell = PSLinkCell;
+	};
+	items = (
+		{
+		cellClass = "HBImageTableCell";
+		height = 150;
+		icon = "logo.png";
+		},
+		{
+			cell = PSGroupCell;
+			label = "";
+		},
+		{
+			cellClass = "HBTwitterCell";
+			label = "R0wDrunner";
+			user = "r0wdrunner";
+		},
+		{
+			cellClass = "HBLinkTableCell";
+			url = "https://github.com/R0wDrunner/Tabsa";
+			label = "Source Code";
+			subtitle = "You want to see my Code? Here it is!";
+		},
+		{
+			cell = PSSwitchCell;
+			default = true;
+			defaults = "com.r0wdrunner.tabsa";
+			key = "tweakEnabled";
+			label = "Enabled";
+			PostNotification = "com.r0wdrunner.tabsa-prefsreload";
+		},
+		{
+			cell = PSGroupCell;
+			defaults = "com.r0wdrunner.tabsa";
+			label = "Miscellaneous";
+			footerText = "";
+		},
+		{
+			cell = PSSwitchCell;
+			default = true;
+			defaults = "com.r0wdrunner.tabsa";
+			key = "flatBar";
+			label = "Flat URL Bar";
+			PostNotification = "com.r0wdrunner.tabsa-prefsreload";
+		},
+		{
+			cell = PSGroupCell;
+			defaults = "com.r0wdrunner.tabsa";
+			label = "";
+			footerText = "";
+		},
+		{
+			cell = PSButtonCell;
+			defaults = "com.r0wdrunner.tabsa";
+			action = respring;
+			label = "Respring";
+		},
+		{
+			cell = PSGroupCell;
+			defaults = "com.r0wdrunner.tabsa";
+			footerAlignment =  1;
+			footerText = "R0wDrunner\nCatch Me If You Can";
+		},
+	);
+}
