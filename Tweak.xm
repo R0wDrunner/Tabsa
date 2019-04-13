@@ -31,9 +31,7 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
   }
 
 @interface BrowserController
--(void) _initSubviews;
 -(bool) _isScreenSizeBigEnoughForTabBar;
--(void) setShowingTabBar:(bool)arg1;
 -(void) _setShowingTabBar:(bool)arg1 animated:(bool)arg2;
 @end
 
@@ -52,17 +50,7 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
 %end
 
 %hook BrowserController
--(id)loadView {
-  self = %orig;
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"WrongPasscode" message:[NSString stringWithFormat:@"You entered:"] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; [alert release];
-  UIDevice *device = [UIDevice currentDevice];
-  [device beginGeneratingDeviceOrientationNotifications];
-  NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-  [nc addObserver:self selector:@selector(orientationChanged:)        name:UIDeviceOrientationDidChangeNotification
-           object:device];
 
-  return self;
-}
   -(void) _setShowingTabBar:(bool)arg1 animated:(bool)arg2 {
       if(TweakEnabled) {
         %orig(YES,YES);
@@ -77,10 +65,4 @@ static void PreferencesChangedCallback(CFNotificationCenterRef center, void *obs
         return %orig;
       }
     }
-    %new
-        - (void)orientationChanged:(NSNotification *)note
-        {
-          [self setShowingTabBar:YES];
-        }
-
 %end
